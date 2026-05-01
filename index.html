@@ -290,6 +290,37 @@
       box-shadow: 0 8px 15px rgba(0,0,0,0.15);
     }
 
+    /* ПОСТОЯННАЯ ПОДСВЕТКА ДЛЯ ВЫБРАННОЙ ДЕТАЛИ */
+    .card.highlighted-part {
+      box-shadow: 0 0 0 3px #dc143c, 0 8px 20px rgba(0,0,0,0.2);
+      position: relative;
+    }
+
+    .card.highlighted-part::before {
+      content: "✓ ВЫБРАНО";
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: #dc143c;
+      color: white;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 5px 12px;
+      border-radius: 20px;
+      z-index: 10;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    /* Адаптация для мобильных устройств */
+    @media (max-width: 768px) {
+      .card.highlighted-part::before {
+        font-size: 10px;
+        padding: 3px 8px;
+        top: -8px;
+        right: -8px;
+      }
+    }
+
     .media-block {
       position: relative;
       width: 100%;
@@ -1692,6 +1723,13 @@
     return urlParams.get(name);
   }
 
+  // Функция для снятия подсветки со всех деталей
+  function clearHighlight() {
+    document.querySelectorAll('.card.highlighted-part').forEach(card => {
+      card.classList.remove('highlighted-part');
+    });
+  }
+
   function openPartByNumber(partNumber) {
     if (!partNumber) return false;
     
@@ -1706,14 +1744,14 @@
         renderPage(currentPage);
         
         setTimeout(() => {
+          // Снимаем подсветку со всех ранее выбранных
+          clearHighlight();
+          
           const card = document.querySelector(`.card[data-part-number="${searchTerm}"]`);
           if (card) {
             card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            card.style.transition = 'all 0.3s ease';
-            card.style.boxShadow = '0 0 0 3px #dc143c, 0 8px 20px rgba(0,0,0,0.2)';
-            setTimeout(() => {
-              card.style.boxShadow = '';
-            }, 2000);
+            // ПОСТОЯННАЯ ПОДСВЕТКА - добавляем класс
+            card.classList.add('highlighted-part');
           }
         }, 100);
         return true;
