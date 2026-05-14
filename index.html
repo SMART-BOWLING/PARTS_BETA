@@ -290,37 +290,6 @@
       box-shadow: 0 8px 15px rgba(0,0,0,0.15);
     }
 
-    /* ПОСТОЯННАЯ ПОДСВЕТКА ДЛЯ ВЫБРАННОЙ ДЕТАЛИ */
-    .card.highlighted-part {
-      box-shadow: 0 0 0 3px #dc143c, 0 8px 20px rgba(0,0,0,0.2);
-      position: relative;
-    }
-
-    .card.highlighted-part::before {
-      content: "✓ ВЫБРАНО";
-      position: absolute;
-      top: -10px;
-      right: -10px;
-      background: #dc143c;
-      color: white;
-      font-size: 12px;
-      font-weight: bold;
-      padding: 5px 12px;
-      border-radius: 20px;
-      z-index: 10;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-
-    /* Адаптация для мобильных устройств */
-    @media (max-width: 768px) {
-      .card.highlighted-part::before {
-        font-size: 10px;
-        padding: 3px 8px;
-        top: -8px;
-        right: -8px;
-      }
-    }
-
     .media-block {
       position: relative;
       width: 100%;
@@ -825,7 +794,7 @@
       color: #666;
     }
 
-    /* ===== АНИМАЦИЯ ЗАГРУЗКИ (по умолчанию для телефона/планшета) ===== */
+    /* ===== АНИМАЦИЯ ЗАГРУЗКИ ===== */
     .loading-screen {
       position: fixed;
       inset: 0;
@@ -870,7 +839,6 @@
       to { transform: rotate(365deg); }
     }
     
-    /* ===== ЕЩЕ БОЛЕЕ УМЕНЬШЕННАЯ АНИМАЦИЯ ЗАГРУЗКИ ДЛЯ ПК (ширина > 1024px) ===== */
     @media (min-width: 1025px) {
       .logo-wrapper {
         width: 160px;
@@ -886,7 +854,6 @@
       }
     }
 
-    /* ===== ВЫПАДАЮЩИЕ СПИСКИ ПОД КАРТОЧКОЙ ===== */
     .take-quick-panel {
       display: none;
       margin-top: 15px;
@@ -943,57 +910,39 @@
       background-size: 24px;
     }
 
-    .take-select.qty-select {
-      background-color: #fff;
-      color: #333;
-    }
-
-    .take-select.machine-select {
-      background-color: #fff;
-      color: #333;
-    }
-
-    /* ===== МОБИЛЬНЫЕ ТЕЛЕФОНЫ (ВЕРТИКАЛЬНО) ===== */
     @media (max-width: 1024px) {
-      .take-field label {
-        font-size: 20px;
-      }
-      
-      .take-select {
-        height: 70px;
-        font-size: 22px;
-        background-size: 28px;
-      }
-      
       .take-row {
         flex-direction: row !important;
         flex-wrap: nowrap !important;
         gap: 8px;
       }
-      
       .take-field {
         flex: 1 1 0 !important;
         min-width: 0 !important;
       }
+      .take-field label {
+        font-size: 20px;
+      }
+      .take-select {
+        height: 70px;
+        font-size: 22px;
+        background-size: 28px;
+      }
     }
 
-    /* ===== ПК И ПЛАНШЕТЫ (ГОРИЗОНТАЛЬНО) ===== */
     @media (min-width: 1025px) {
       .take-row {
         flex-direction: row;
         align-items: flex-end;
         gap: 20px;
       }
-      
       .take-field {
         flex: 1;
       }
-      
       .take-field label {
         font-size: 14px;
         margin-bottom: 4px;
       }
-      
       .take-select {
         height: 45px;
         font-size: 15px;
@@ -1004,7 +953,37 @@
       }
     }
 
-    /* Остальные медиа-запросы */
+    @media (max-width: 768px) {
+      .take-row {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        gap: 4px;
+      }
+      .take-field {
+        flex: 1 1 0 !important;
+        min-width: 0 !important;
+      }
+      .take-field label {
+        font-size: 11px !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 2px;
+      }
+      .take-select {
+        height: 36px !important;
+        font-size: 12px !important;
+        padding: 0 16px 0 4px !important;
+        border-width: 1px;
+        border-radius: 4px;
+        background-size: 10px;
+        background-position: right 3px center;
+      }
+      .take-quick-panel {
+        padding: 8px;
+      }
+    }
+
     @media (max-width: 1024px) {
       .site-name-text {
         font-size: 50px;
@@ -1015,7 +994,6 @@
         height: 100%;
         line-height: 1.2;
       }
-      
       header {
         display: flex;
         align-items: center;
@@ -1023,49 +1001,40 @@
         padding: 10px 30px;
         height: 140px;
       }
-      
       .site-name {
         display: flex;
         align-items: center;
         justify-content: center;
         height: 100%;
       }
-      
       .user-avatar {
         width: 70px;
         height: 70px;
         border-width: 3px;
       }
-      
       .user-avatar i {
         font-size: 40px;
       }
-      
       .user-dropdown {
         top: 170px;
         min-width: 350px;
       }
-      
       .user-dropdown a {
         padding: 25px 30px;
         font-size: 34px;
       }
-      
       body {
         padding: 20px;
       }
-      
       .cards.desktop-layout,
       .card.desktop-layout {
         width: 100% !important;
         max-width: 900px !important;
         margin: 0 auto !important;
       }
-      
       .cards.desktop-layout {
         flex-direction: column !important;
       }
-      
       .controls {
         display: flex;
         flex-wrap: wrap;
@@ -1075,7 +1044,6 @@
         gap: 8px;
         padding: 10px 0;
       }
-      
       .pill {
         background: #fff;
         border-radius: 20px;
@@ -1092,7 +1060,6 @@
         min-width: 100px;
         max-width: 150px;
       }
-      
       .controls input {
         width: 60px;
         height: 60px;
@@ -1107,7 +1074,6 @@
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         transition: all 0.2s ease;
       }
-      
       .btn {
         height: 60px;
         padding: 0 24px;
@@ -1123,26 +1089,22 @@
         transition: all 0.2s ease;
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       }
-      
       .btn-add {
         background: linear-gradient(to bottom, #1f2937, #0d1520);
         color: #fff;
         min-width: 140px;
       }
-      
       .btn-info {
         background: linear-gradient(to bottom, #ffffff, #f0f0f0);
         color: #000;
         min-width: 60px;
         justify-content: center;
       }
-      
       .btn-take {
         background: linear-gradient(to bottom, #dc143c, #b01030);
         color: #fff;
         min-width: 140px;
       }
-      
       .part-name-container {
         display: flex;
         align-items: center;
@@ -1153,7 +1115,6 @@
         min-height: 60px;
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       }
-      
       .part-name-text {
         flex: 1;
         font-size: 18px;
@@ -1161,7 +1122,6 @@
         text-align: left;
         padding: 16px 0;
       }
-      
       .part-name-edit-btn,
       .part-name-save-btn,
       .part-name-cancel-btn {
@@ -1178,7 +1138,6 @@
         color: #fff;
         margin-left: 8px;
       }
-      
       .part-name-input {
         flex: 1;
         height: 52px;
@@ -1189,7 +1148,6 @@
         font-weight: 600;
         padding: 0 12px;
       }
-      
       .top-controls {
         display: flex;
         flex-wrap: nowrap;
@@ -1202,7 +1160,6 @@
         box-sizing: border-box;
         overflow-x: auto;
       }
-      
       .top-controls .btn-top {
         height: 56px;
         font-size: 18px;
@@ -1222,7 +1179,6 @@
         gap: 8px;
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       }
-      
       .select-wrapper {
         position: relative;
         min-width: 120px;
@@ -1233,7 +1189,6 @@
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         flex-shrink: 0;
       }
-      
       .pagination {
         display: flex;
         justify-content: center;
@@ -1245,47 +1200,38 @@
         max-width: 900px;
         margin: 50px auto;
       }
-      
       .pagination button {
         padding: 18px 30px;
         font-size: 20px;
         min-width: 140px;
         height: 60px;
       }
-      
       .page-numbers button {
         min-width: 40px;
         height: 60px;
         padding: 0 20px;
         font-size: 20px;
       }
-      
       .modal {
         padding: 40px;
         width: 80vw;
       }
-      
       .modal pre {
         font-size: 26px;
         padding: 20px;
       }
-      
       .modal-close {
         font-size: 40px;
       }
-      
       .photo-modal-content {
         width: 95%;
       }
-      
       .photo-image-container {
         padding: 20px;
       }
-      
       .photo-image-container img {
         max-height: 40vh;
       }
-      
       .photo-close-btn {
         padding: 15px 0;
         font-size: 16px;
@@ -1297,12 +1243,10 @@
         height: 75px;
         padding: 4px 8px;
       }
-      
       .logo img {
         width: 50px;
         height: 50px;
       }
-      
       .site-name-text {
         font-size: 32px;
         margin-bottom: 0;
@@ -1314,17 +1258,14 @@
         font-weight: 700;
         letter-spacing: 1px;
       }
-      
       .user-avatar {
         width: 50px;
         height: 50px;
         border-width: 2px;
       }
-      
       .user-avatar i {
         font-size: 30px;
       }
-      
       .user-dropdown {
         top: 85px;
         right: 8px;
@@ -1332,27 +1273,22 @@
         border-radius: 8px;
         border-width: 1px;
       }
-      
       .user-dropdown a {
         padding: 12px 15px;
         font-size: 18px;
       }
-      
       #content {
         margin-top: 95px;
       }
-      
       body {
         padding: 8px 4px;
       }
-      
       .top-controls {
         max-width: 1300px;
         margin-bottom: 8px;
         gap: 6px;
         padding: 0 4px 8px;
       }
-      
       .top-controls .btn-top {
         height: 34px;
         font-size: 12px;
@@ -1360,29 +1296,21 @@
         border-radius: 8px;
         gap: 4px;
       }
-      
       .select-wrapper {
         height: 34px;
         min-width: 0;
         max-width: none;
         border-radius: 8px;
       }
-      
-      .select-wrapper::before {
-        display: none;
-      }
-      
       .select-wrapper select {
         font-size: 12px;
         padding: 0 25px 0 8px;
         color: white;
       }
-      
       .select-wrapper::after {
         right: 8px;
         font-size: 12px;
       }
-      
       .cards.desktop-layout {
         display: flex;
         flex-direction: row;
@@ -1395,7 +1323,6 @@
         box-sizing: border-box;
         max-width: 1300px;
       }
-      
       .card.desktop-layout {
         width: calc((100% - 16px) / 3) !important;
         max-width: none !important;
@@ -1406,24 +1333,20 @@
         padding: 10px;
         border-radius: 10px;
       }
-      
       .media-block {
         border-radius: 6px;
         padding-top: 65%;
       }
-      
       .part-name-container {
         min-height: 34px;
         margin: 6px 0;
         padding: 0 6px;
         border-radius: 8px;
       }
-      
       .part-name-text {
         font-size: 13px;
         padding: 8px 0;
       }
-      
       .part-name-input {
         height: 30px;
         font-size: 13px;
@@ -1431,7 +1354,6 @@
         padding: 0 6px;
         border-width: 1px;
       }
-      
       .part-name-edit-btn,
       .part-name-save-btn,
       .part-name-cancel-btn {
@@ -1441,14 +1363,12 @@
         margin-left: 4px;
         border-radius: 4px;
       }
-      
       .controls {
         margin-top: 8px;
         gap: 4px;
         padding: 6px 0;
         flex-wrap: nowrap;
       }
-      
       .pill {
         height: 30px;
         font-size: 11px;
@@ -1457,7 +1377,6 @@
         max-width: 100px;
         min-width: 60px;
       }
-      
       .controls input {
         width: 30px;
         height: 30px;
@@ -1466,7 +1385,6 @@
         padding: 0 2px;
         min-width: 30px;
       }
-      
       .btn {
         height: 30px;
         font-size: 11px;
@@ -1475,41 +1393,34 @@
         border-radius: 6px;
         gap: 3px;
       }
-      
       .btn-info {
         min-width: 30px;
         padding: 0 4px;
       }
-      
       .btn i {
         font-size: 10px;
       }
-      
       @media (min-width: 1025px) and (max-width: 1150px) {
         .btn-add span,
         .btn-take span {
           display: none;
         }
-        
         .btn-add,
         .btn-take {
           min-width: 40px;
           padding: 0 6px;
           justify-content: center;
         }
-        
         .btn-add i,
         .btn-take i {
           margin: 0;
         }
       }
-      
       .pagination {
         max-width: 1300px;
         margin: 20px auto;
         gap: 4px;
       }
-      
       .pagination button {
         padding: 8px 12px;
         font-size: 13px;
@@ -1518,7 +1429,6 @@
         border-radius: 6px;
         gap: 4px;
       }
-      
       .page-numbers button {
         height: 36px;
         font-size: 13px;
@@ -1526,71 +1436,29 @@
         min-width: 24px;
         border-radius: 8px;
       }
-      
       .pagination button i {
         font-size: 14px;
       }
-      
       .modal {
         padding: 12px;
         border-radius: 8px;
       }
-      
       .modal h3 {
         font-size: 14px;
         padding-bottom: 6px;
       }
-      
       .modal pre {
         font-size: 12px;
         padding: 6px;
         line-height: 1.2;
       }
-      
       .modal-close {
         font-size: 20px;
         top: 4px;
         right: 8px;
       }
-      
       .photo-image-container img {
         max-height: 60vh;
-      }
-    }
-
-    /* ===== ТЕЛЕФОНЫ (ДО 768px) - УТОЧНЯЮЩИЕ СТИЛИ ===== */
-    @media (max-width: 768px) {
-      .take-row {
-        flex-direction: row !important;
-        flex-wrap: nowrap !important;
-        gap: 4px;
-      }
-      
-      .take-field {
-        flex: 1 1 0 !important;
-        min-width: 0 !important;
-      }
-      
-      .take-field label {
-        font-size: 11px !important;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        margin-bottom: 2px;
-      }
-      
-      .take-select {
-        height: 36px !important;
-        font-size: 12px !important;
-        padding: 0 16px 0 4px !important;
-        border-width: 1px;
-        border-radius: 4px;
-        background-size: 10px;
-        background-position: right 3px center;
-      }
-      
-      .take-quick-panel {
-        padding: 8px;
       }
     }
   </style>
@@ -1603,7 +1471,6 @@
   </div>
 </div>
 
-<!-- Анимация загрузки для операций -->
 <div class="loading-screen" id="operationLoader" style="display: none; opacity: 1;">
   <div class="logo-wrapper">
     <div class="glow-ring"></div>
@@ -1661,9 +1528,9 @@
       <i class="fas fa-sync-alt"></i> Сбросить
     </button>
 
-  <button id="btnAnalysis" class="btn-top" onclick="window.open('https://smart-bowling.github.io/TRANSFER/')">
-  <i class="fas fa-right-left"></i> Transfer
-</button>
+    <button id="btnAnalysis" class="btn-top" onclick="window.open('https://smart-bowling.github.io/TRANSFER/')">
+      <i class="fas fa-right-left"></i> Transfer
+    </button>
     
     <button onclick="window.open('https://smart-bowling.github.io/ADD-PARTS-BB/', '_blank')" class="btn-top">
       <i class="fas fa-plus-circle"></i> Добавить
@@ -1717,49 +1584,51 @@
     nextPage: () => { if (currentPage < totalPages) goToPage(currentPage + 1); }
   };
 
-  // ========== ФУНКЦИИ ДЛЯ QR-ПЕРЕХОДА ПО ДЕТАЛИ ==========
+  // ========== ФУНКЦИЯ ДЛЯ ПОИСКА ПО ШТРИХ-КОДУ ==========
+  let lastScannedPart = null;
+
+  function findPartByBarcode(barcode) {
+    if (!barcode) return false;
+    
+    const searchTerm = barcode.toLowerCase().trim();
+    const foundEntry = allEntries.find(e => e.partNumber.toLowerCase() === searchTerm);
+    
+    if (foundEntry) {
+      // Показываем ТОЛЬКО эту деталь
+      currentEntries = [foundEntry];
+      updateTotalPages();
+      currentPage = 1;
+      renderPage(currentPage);
+      
+      // Прокручиваем к карточке
+      setTimeout(() => {
+        const card = document.querySelector('.card');
+        if (card) {
+          card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 100);
+      
+      return true;
+    } else {
+      // Если не нашли, показываем сообщение и возвращаем полный список
+      alert(`Деталь с номером "${barcode}" не найдена!`);
+      resetToAllEntries();
+      return false;
+    }
+  }
+
+  function resetToAllEntries() {
+    currentEntries = [...allEntries];
+    updateTotalPages();
+    currentPage = 1;
+    renderPage(currentPage);
+    document.getElementById('sortSelect').value = 'all';
+  }
+
   function getUrlParameter(name) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(name);
   }
-
-  // Функция для снятия подсветки со всех деталей
-  function clearHighlight() {
-    document.querySelectorAll('.card.highlighted-part').forEach(card => {
-      card.classList.remove('highlighted-part');
-    });
-  }
-
-  function openPartByNumber(partNumber) {
-    if (!partNumber) return false;
-    
-    const searchTerm = partNumber.toLowerCase().trim();
-    const foundEntry = allEntries.find(e => e.partNumber.toLowerCase() === searchTerm);
-    
-    if (foundEntry) {
-      const index = currentEntries.findIndex(e => e.partNumber.toLowerCase() === searchTerm);
-      if (index !== -1) {
-        const page = Math.floor(index / cardsPerPage) + 1;
-        currentPage = page;
-        renderPage(currentPage);
-        
-        setTimeout(() => {
-          // Снимаем подсветку со всех ранее выбранных
-          clearHighlight();
-          
-          const card = document.querySelector(`.card[data-part-number="${searchTerm}"]`);
-          if (card) {
-            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            // ПОСТОЯННАЯ ПОДСВЕТКА - добавляем класс
-            card.classList.add('highlighted-part');
-          }
-        }, 100);
-        return true;
-      }
-    }
-    return false;
-  }
-  // ======================================================
 
   function showLoader(show) {
     document.getElementById('loader').style.display = show ? 'flex' : 'none';
@@ -2525,6 +2394,61 @@
     }
   }
 
+  // ========== ИНИЦИАЛИЗАЦИЯ СКАНЕРА ==========
+  function initScanner() {
+    // Создаем скрытое поле ввода для сканера
+    const scannerInput = document.createElement('input');
+    scannerInput.type = 'text';
+    scannerInput.id = 'scannerHiddenInput';
+    scannerInput.style.position = 'fixed';
+    scannerInput.style.top = '-100px';
+    scannerInput.style.left = '-100px';
+    scannerInput.style.opacity = '0';
+    scannerInput.style.pointerEvents = 'none';
+    document.body.appendChild(scannerInput);
+    
+    // Автоматически фокусируемся на скрытом поле
+    setInterval(() => {
+      if (document.activeElement !== scannerInput && 
+          document.activeElement?.tagName !== 'INPUT' &&
+          document.activeElement?.tagName !== 'TEXTAREA' &&
+          !document.activeElement?.isContentEditable) {
+        scannerInput.focus();
+      }
+    }, 500);
+    
+    // Обработка ввода со сканера
+    scannerInput.addEventListener('keypress', async (e) => {
+      if (e.key === 'Enter') {
+        const scannedCode = scannerInput.value.trim();
+        if (scannedCode) {
+          console.log('Отсканировано:', scannedCode);
+          findPartByBarcode(scannedCode);
+          scannerInput.value = '';
+        }
+      }
+    });
+    
+    // Для быстрых сканеров без Enter
+    let scanBuffer = '';
+    let scanTimeout = null;
+    
+    document.addEventListener('keydown', (e) => {
+      if (document.activeElement === scannerInput) return;
+      
+      if (e.key.length === 1 && e.key.match(/[a-zA-Z0-9\-_]/)) {
+        scanBuffer += e.key;
+        clearTimeout(scanTimeout);
+        scanTimeout = setTimeout(() => {
+          if (scanBuffer.length > 3) {
+            findPartByBarcode(scanBuffer);
+          }
+          scanBuffer = '';
+        }, 150);
+      }
+    });
+  }
+
   async function initApp() {
     showOperationLoader(true);
     try {
@@ -2535,14 +2459,16 @@
       currentPage = 1;
       renderPage(currentPage);
       
-      // ========== ПРОВЕРКА QR-ПАРАМЕТРА ==========
+      // Инициализируем сканер
+      initScanner();
+      
+      // Проверяем параметр URL
       const partFromUrl = getUrlParameter('part');
       if (partFromUrl) {
         setTimeout(() => {
-          openPartByNumber(partFromUrl);
+          findPartByBarcode(partFromUrl);
         }, 500);
       }
-      // ==========================================
       
     } catch (error) {
       console.error('Init error:', error);
@@ -2554,23 +2480,12 @@
     document.getElementById('btnSearch')?.addEventListener('click', () => {
       const term = prompt('Введите номер детали:');
       if (term !== null) {
-        const searchTerm = term.toLowerCase().trim();
-        currentEntries = searchTerm.length === 0 
-          ? [...allEntries] 
-          : allEntries.filter(e => e.partNumber.toLowerCase().includes(searchTerm));
-        updateTotalPages();
-        currentPage = 1;
-        renderPage(currentPage);
-        document.getElementById('sortSelect').value = 'all';
+        findPartByBarcode(term);
       }
     });
 
     document.getElementById('btnReset')?.addEventListener('click', () => {
-      currentEntries = [...allEntries];
-      updateTotalPages();
-      currentPage = 1;
-      renderPage(currentPage);
-      document.getElementById('sortSelect').value = 'all';
+      resetToAllEntries();
     });
 
     document.getElementById('sortSelect')?.addEventListener('change', async function() {
